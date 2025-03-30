@@ -1,6 +1,6 @@
 // (C) Uri Wilensky. https://github.com/NetLogo/NetLogo
 
-package org.nlogo.properties
+package org.nlogo.window
 
 import java.awt.{ Color, Dimension, Frame, Graphics, GridBagLayout, GridBagConstraints, Insets }
 import java.awt.event.{ MouseAdapter, MouseEvent }
@@ -10,7 +10,6 @@ import javax.swing.{ JLabel, JPanel }
 import org.nlogo.api.{ Color => NLColor }
 import org.nlogo.swing.{ RoundedBorderPanel, Utils }
 import org.nlogo.theme.{ InterfaceColors, ThemeSync }
-import org.nlogo.window.{ JFXColorPicker, NumAndRGBA }
 
 abstract class ColorEditor(accessor: PropertyAccessor[Color], frame: Frame)
   extends PropertyEditor(accessor) {

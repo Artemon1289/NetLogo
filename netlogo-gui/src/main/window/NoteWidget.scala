@@ -5,7 +5,7 @@ package org.nlogo.window
 import java.awt.{ Color, Dimension, GridBagConstraints, GridBagLayout, Insets, Rectangle }
 import javax.swing.JLabel
 
-import org.nlogo.api.{ Editable, Property }
+import org.nlogo.api.Property
 import org.nlogo.core.{ TextBox => CoreTextBox }
 import org.nlogo.core.I18N
 import org.nlogo.swing.Transparent

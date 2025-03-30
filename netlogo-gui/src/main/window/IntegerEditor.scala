@@ -1,6 +1,6 @@
 // (C) Uri Wilensky. https://github.com/NetLogo/NetLogo
 
-package org.nlogo.properties
+package org.nlogo.window
 
 import java.awt.{ BorderLayout, GridBagConstraints }
 import javax.swing.JLabel
@@ -9,22 +9,31 @@ import org.nlogo.swing.TextField
 import org.nlogo.swing.Implicits._
 import org.nlogo.theme.InterfaceColors
 
-abstract class StringEditor(accessor: PropertyAccessor[String])
-  extends PropertyEditor(accessor) {
+import util.control.Exception.catching
 
-  private val editor = new TextField(12)
+abstract class IntegerEditor(accessor: PropertyAccessor[Int])
+  extends PropertyEditor(accessor) with WorldIntegerEditor {
+
+  private val editor = new TextField(8)
   setLayout(new BorderLayout(BORDER_PADDING, 0))
   private val label = new JLabel(accessor.displayName)
   add(label, BorderLayout.WEST)
-  editor.getDocument.addDocumentListener({ () => changed })
+  editor.getDocument().addDocumentListener({ () => changed() })
   add(editor, BorderLayout.CENTER)
-  override def get = Option(editor.getText)
-  override def set(value: String) { editor.setText(value) }
+  override def setEnabled(enabled: Boolean) {
+    super.setEnabled(enabled)
+    editor.setEnabled(enabled)
+    label.setEnabled(enabled)
+  }
+  override def get =
+    catching(classOf[NumberFormatException])
+      .opt(editor.getText.toInt)
+  override def set(value: Int) { editor.setText(value.toString) }
   override def requestFocus() { editor.requestFocus() }
   override def getConstraints = {
     val c = super.getConstraints
     c.fill = GridBagConstraints.HORIZONTAL
-    c.weightx = 0.25
+    c.weightx = 0.025
     c
   }
 
