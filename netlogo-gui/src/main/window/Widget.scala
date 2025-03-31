@@ -26,13 +26,13 @@ abstract class SingleErrorWidget extends Widget with SingleErrorHandler {
   override def error(e: Exception): Unit = {
     super.error(e)
 
-    new WidgetErrorEvent(this, e).raise(this)
+    new WidgetErrorEvent(this, Option(e)).raise(this)
   }
 
   override def error(key: Object, e: Exception): Unit = {
     super.error(key, e)
 
-    new WidgetErrorEvent(this, e).raise(this)
+    new WidgetErrorEvent(this, Option(e)).raise(this)
   }
 }
 
@@ -40,13 +40,13 @@ abstract class MultiErrorWidget extends Widget with MultiErrorHandler {
   override def removeAllErrors(): Unit = {
     super.removeAllErrors()
 
-    new WidgetErrorEvent(this, null).raise(this)
+    new WidgetErrorEvent(this, None).raise(this)
   }
 
   override def error(key: Object, e: Exception): Unit = {
     super.error(key, e)
 
-    new WidgetErrorEvent(this, e).raise(this)
+    new WidgetErrorEvent(this, Option(e)).raise(this)
   }
 }
 
@@ -210,7 +210,7 @@ abstract class Widget extends JPanel with RoundedBorderPanel with ThemeSync {
     new WidgetAddedEvent(this).raise(this)
   }
 
-  protected def checkRecursive(compiler: CompilerServices, source: String, name: String): Boolean =
+  def checkRecursive(compiler: CompilerServices, source: String, name: String): Boolean =
     compiler.tokenizeForColorization(source).exists(token => token.tpe == TokenType.Ident && token.text == name)
 
   implicit class RichStringOption(s: Option[String]) {
