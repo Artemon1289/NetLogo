@@ -5,9 +5,7 @@ package org.nlogo.window
 import java.awt.{ Color, Dimension, GridBagConstraints, GridBagLayout, Insets, Rectangle }
 import javax.swing.JLabel
 
-import org.nlogo.api.CompilerServices
 import org.nlogo.core.{ I18N, TextBox => CoreTextBox }
-import org.nlogo.editor.Colorizer
 import org.nlogo.swing.Transparent
 import org.nlogo.theme.InterfaceColors
 
@@ -45,7 +43,7 @@ class NoteWidget extends SingleErrorWidget with Transparent with Editable {
 
   override def classDisplayName: String = I18N.gui.get("tabs.run.widgets.note")
 
-  override def createEditPanel(compiler: CompilerServices, colorizer: Colorizer): EditPanel =
+  override def editPanel: EditPanel =
     null
 
   override def isNote = true
