@@ -1342,7 +1342,7 @@ class WidgetPanel(val workspace: GUIWorkspace)
       // resize all the widgets, must happen first or things can happen out of order for more complex layouts
       getWrappers.foreach { w =>
         if (w.widget.oldSize) {
-          w.widget.oldSize = false
+          w.widget.oldSize(false)
           w.setSize(new Dimension(w.getPreferredSize.width.max(w.getWidth), w.getPreferredSize.height.max(w.getHeight)))
         }
       }
@@ -1368,7 +1368,7 @@ class WidgetPanel(val workspace: GUIWorkspace)
       // only resize widgets, no positions will be adjusted
       getWrappers.foreach { w =>
         if (w.widget.oldSize) {
-          w.widget.oldSize = false
+          w.widget.oldSize(false)
           w.setSize(new Dimension(w.getPreferredSize.width.max(w.getWidth), w.getPreferredSize.height.max(w.getHeight)))
         }
       }

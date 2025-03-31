@@ -90,7 +90,7 @@ abstract class Widget extends JPanel with RoundedBorderPanel with ThemeSync {
     zoomFactor
   def oldSize: Boolean =
     _oldSize
-  def oldSize_=(value: Boolean): Unit = {
+  def oldSize(value: Boolean): Unit = {
     _oldSize = value
     initGUI()
     revalidate()
