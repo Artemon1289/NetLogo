@@ -152,17 +152,4 @@ class DummyPlotEditPanel(target: DummyPlotWidget) extends WidgetEditPanel(target
     Seq(nameOptions, xLabel, xMin, xMax, yLabel, yMin, yMax, autoPlotOn, showLegend, oldSize)
 
   override def isResizable: Boolean = true
-
-  override def syncTheme(): Unit = {
-    nameOptions.syncTheme()
-    xLabel.syncTheme()
-    xMin.syncTheme()
-    xMax.syncTheme()
-    yLabel.syncTheme()
-    yMin.syncTheme()
-    yMax.syncTheme()
-    autoPlotOn.syncTheme()
-    showLegend.syncTheme()
-    oldSize.syncTheme()
-  }
 }

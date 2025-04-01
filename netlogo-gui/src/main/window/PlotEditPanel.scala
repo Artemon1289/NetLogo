@@ -213,21 +213,4 @@ class PlotEditPanel(target: PlotWidget, colorizer: Colorizer) extends WidgetEdit
         editPlotPens, oldSize)
 
   override def isResizable: Boolean = true
-
-  override def syncTheme(): Unit = {
-    plotName.syncTheme()
-    xLabel.syncTheme()
-    xMin.syncTheme()
-    xMax.syncTheme()
-    yLabel.syncTheme()
-    yMin.syncTheme()
-    yMax.syncTheme()
-    autoPlotOn.syncTheme()
-    showLegend.syncTheme()
-    runtimeError.syncTheme()
-    setupCode.syncTheme()
-    updateCode.syncTheme()
-    editPlotPens.syncTheme()
-    oldSize.syncTheme()
-  }
 }
